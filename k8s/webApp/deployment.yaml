@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-python
+spec:
+  selector:
+    matchLabels:
+      app: web-app-python
+  template:
+    metadata:
+      labels:
+        app: web-app-python
+    spec:
+      containers:
+      - name: web-app-python
+        image: murilogomes/rotten-potatoes:v1       
+        ports:
+        - containerPort: 5000
+        env:                #Configurar as variáveis de ambiente para comunicar com o mongoDB. Neste caso, utilizad as variáveis de ambiente que estão definidas no código da aplicação.
+          - name: MONGODB_DB
+            value: admin
+          - name: MONGODB_HOST
+            value: mongo-service  #usar o nome do serviço criado  
+          - name: MONGODB_PORT
+            value: "27017"
+          - name: MONGODB_USERNAME
+            value: mongouser
+          - name: MONGODB_PASSWORD
+            value: mongopwd
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+

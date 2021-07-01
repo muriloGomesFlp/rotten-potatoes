@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-app-python-service
+spec:
+  selector:
+    app: web-app-python
+  ports:
+  - port: 80         #porta que será disponibilizado a aplicação, ao receber uma solicitação na 80 ele redireciona para o targetPort: 5000
+    targetPort: 5000
+    nodePort: 30000
+  type: NodePort

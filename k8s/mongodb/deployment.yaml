@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+spec:
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+        - name: mongodb
+          image: mongo:4.4.6
+          ports:
+            - containerPort: 27017
+          env: #configurar o ambiente do mongoDB, para que possa ser utilizado. Desta forma é informado o usuário e senha do MongoDb que será utilizado depois pela aplicação. Verificar documentação do container para identificar as variáveis de ambiente que serão utilizadas.
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: mongouser
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              value: mongopwd
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          
