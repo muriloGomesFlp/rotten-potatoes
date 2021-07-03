@@ -45,6 +45,7 @@ jobs:
         uses: Azure/aks-set-context@v1.1
         with:
           creds: ${{secrets.AZUREK8S_LOGIN}}
+          resource-group: aulaKB2
           cluster-name: k8sAula
       
 
