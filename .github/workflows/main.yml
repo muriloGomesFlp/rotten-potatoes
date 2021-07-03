@@ -26,8 +26,8 @@ jobs:
       - name: build and push a Docker images  #nome a action
         uses: docker/build-push-action@v2.6.1  #modelo de action utilizado (olhar marketplace ao lado)
         with: #determina os parametros que será urtilizado
-          context: ./home/murilo/aulasDocker/projetKubeDev/aula2/rotten-potatoes/src #path que será enviado ao docker deamon para criar a imagem
-          file: ./home/murilo/aulasDocker/projetKubeDev/aula2/rotten-potatoes/src/DockerFile
+          context: ./src #path que será enviado ao docker deamon para criar a imagem
+          file: ./src/Dockerfile
           push: true
           tags: | #usado o pip para colocar em baixo. Para gerar um número automático de versão, utiliza-se a variável ${{ github.run_number }} , ou seja número exclusivo para cada execução de um fluxo de trabalho específico em um repositório
             murilogomes/rotten-potatoes:latest
