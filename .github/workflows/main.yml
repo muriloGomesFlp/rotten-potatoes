@@ -60,6 +60,7 @@ jobs:
           manifests: |
             k8s/webApp/deployment.yaml
             k8s/webApp/service.yaml
+          images: murilogomes/rotten-potatoes:v${{ github.run_number }} 
         
 
           
