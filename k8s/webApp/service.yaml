@@ -9,4 +9,4 @@ spec:
   - port: 80         #porta que será disponibilizado a aplicação, ao receber uma solicitação na 80 ele redireciona para o targetPort: 5000
     targetPort: 5000
     nodePort: 30000
-  type: NodePort
+  type: LoadBalancer #NodePort
