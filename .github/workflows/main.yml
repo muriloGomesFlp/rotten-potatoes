@@ -39,6 +39,7 @@ jobs:
             murilogomes/rotten-potatoes:v${{ github.run_number }} 
   CD:
     runs-on: ubuntu-latest #agente que irá rodar o job, neste caso o S.O
+    needs: [CI] #a atg "needs" informa ao workflow que para executar o Job CD ele DEPENDE do CI, ou seja, o CI tem que terminar para iniciar o CD 
     steps:
       - uses: actions/checkout@v2
       - name: Azure Kubernetes set context
