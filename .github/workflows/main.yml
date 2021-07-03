@@ -37,8 +37,5 @@ jobs:
           tags: | #usado o pip para colocar em baixo. Para gerar um número automático de versão, utiliza-se a variável ${{ github.run_number }} , ou seja número exclusivo para cada execução de um fluxo de trabalho específico em um repositório
             murilogomes/rotten-potatoes:latest
             murilogomes/rotten-potatoes:${{ github.run_number }} 
-      - name: Docker Login
-        uses: docker/login-action@v1.10.0
-        with:
-          logout: true
+
           
