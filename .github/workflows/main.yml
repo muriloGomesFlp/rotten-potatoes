@@ -44,7 +44,7 @@ jobs:
       - name: Azure Kubernetes set context
         uses: Azure/aks-set-context@v1.1
         with:
-          cred: ${{secrets.AZUREK8S_LOGIN}}
+          creds: ${{secrets.AZUREK8S_LOGIN}}
           cluster-name: k8sAula
       
 
