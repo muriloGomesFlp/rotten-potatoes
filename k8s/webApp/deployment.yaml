@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: web-app-python
-        image: murilogomes/rotten-potatoes:v1       
+        image: murilogomes/rotten-potatoes    
         ports:
         - containerPort: 5000
         env:                #Configurar as variáveis de ambiente para comunicar com o mongoDB. Neste caso, utilizad as variáveis de ambiente que estão definidas no código da aplicação.
