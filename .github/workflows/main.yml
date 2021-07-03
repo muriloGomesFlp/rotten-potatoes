@@ -16,21 +16,20 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build: #esse é um job, o build.
+  CI: #esse é um job, o build.
     # The type of runner that the job will run on
     runs-on: ubuntu-latest #agente que irá rodar o job, neste caso o S.O
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2  #pega o codigo do projeto no reposítorio
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - uses: actions/checkout@v2 #pega o codigo do projeto no reposítorio
+      - name: build and push a Docker images  #nome a action
+        uses: docker/build-push-action@v2.6.1  #modelo de action utilizado (olhar marketplace ao lado)
+        with: #determina os parametros que será urtilizado
+          context: ./src #path que será enviado ao docker deamon para criar a imagem
+          file: ./src/Dockerfile
+          push: true
+          tags: | #usado o pip para colocar em baixo. Para gerar um número automático de versão, utiliza-se a variável ${{ github.run_number }} , ou seja número exclusivo para cada execução de um fluxo de trabalho específico em um repositório
+            murilogomes/rotten_potatoes:latest
+            murilogomes/rotten_potatoes: ${{ github.run_number }} 
+            
