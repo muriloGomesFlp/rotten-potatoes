@@ -36,6 +36,6 @@ jobs:
           push: true
           tags: | #usado o pip para colocar em baixo. Para gerar um número automático de versão, utiliza-se a variável ${{ github.run_number }} , ou seja número exclusivo para cada execução de um fluxo de trabalho específico em um repositório
             murilogomes/rotten-potatoes:latest
-            murilogomes/rotten-potatoes:${{ github.run_number }} 
+            murilogomes/rotten-potatoes:v${{ github.run_number }} 
 
           
